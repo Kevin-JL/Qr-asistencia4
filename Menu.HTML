@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú de Grupo y Escaneo de Código QR</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<script src="scripts.js" defer></script>
+</head>
+<body>
+
+<h1>Menú</h1>
+
+<button onclick="toggleForm('grupoForm')">Crear Grupo</button>
+<button onclick="escanearCodigoQR()">Escanear Código QR</button>
+<button onclick="verificarContrasena()">Descargar Lista</button>
+
+<div id="grupoForm" style="display: none;">
+  <h2>Crear Grupo</h2>
+  <label for="escuela">Escuela:</label>
+  <input type="text" id="escuela"><br><br>
+  <label for="nombreGrupo">Nombre del Grupo:</label>
+  <input type="text" id="nombreGrupo"><br><br>
+  <label for="numAlumnos">Número de Alumnos:</label>
+  <input type="number" id="numAlumnos" onchange="generarCasillasMatriculas(this.value)"><br><br>
+  <div id="matriculasContainer"></div>
+  <button onclick="crearNuevoGrupo()">Crear Nuevo Grupo</button>
+</div>
+
+<div id="codigoQR" style="display: none;">
+  <h2>Código QR</h2>
+  <canvas id="qrCanvas"></canvas>
+</div>
+
+<div id="contrasenaForm" style="display: none;">
+  <h2>Descargar Lista - Ingrese Contraseña</h2>
+  <label for="contrasena">Contraseña:</label>
+  <input type="password" id="contrasena">
+  <button onclick="verificarContrasena()">Ingresar</button>
+</div>
+
+</body>
+</html>
